@@ -1,9 +1,9 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "../include/MenuInterface.hpp"
-#include "../include/Game.hpp"
-#include "../include/Text.hpp"
+#include "../../include/interfaces/MenuInterface.hpp"
+#include "../../include/Game.hpp"
+#include "../../include/Text.hpp"
 
 /**
  * @brief Handle SDL Events in the menu

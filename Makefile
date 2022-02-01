@@ -28,15 +28,13 @@ endif
 # *****************************************************
 # Make
 
-render: Main.o Game.o Text.o MenuInterface.o Menu.o
-	$(CC) -o bin/$@ build/main.o build/Game.o build/Text.o build/MenuInterface.o build/Menu.o $(SDL2_FLAGS)
-
-#render: build/main.o build/Utils.o build/Game.o build/StarterInterface.o build/ExplorationInterface.o build/AttackInterface.o build/InventoryInterface.o build/EndingInterface.o build/Starter.o build/Map.o build/Pokemon.o build/Text.o build/Battle.o build/Inventory.o build/Ending.o
- #	$(CC) -o bin/$@ $^ $(SDLFLAGS)
- #$(BFOLDER)/%.o: $(SFOLDER)/%.cpp $(IFOLDER)/%.hpp
- #	$(CC) -o $@ -c $< $(CXXFLAGS)
+render: Main.o Game.o Text.o interfaces/MenuInterface.o Menu.o
+	$(CC) -o bin/$@ build/Main.o build/Game.o build/Text.o build/interfaces/MenuInterface.o build/Menu.o $(SDL2_FLAGS)
 
 %.o: $(S_FOLDER)/%.cpp $(I_FOLDER)/%.hpp
+	$(CC) -o build/$@ -c $< $(CXX_FLAGS)
+
+interfaces/%.o: $(S_FOLDER)/interfaces/%.cpp $(I_FOLDER)/interfaces/%.hpp
 	$(CC) -o build/$@ -c $< $(CXX_FLAGS)
 
 # _____________________________________________________
@@ -47,6 +45,7 @@ render: Main.o Game.o Text.o MenuInterface.o Menu.o
 
 clean:
 	$(RM) build$(SEP)*.o
+	$(RM) build$(SEP)interfaces$(SEP)*.o
 	$(RM) bin$(SEP)render
 
 st:
@@ -54,6 +53,7 @@ st:
 
 init:
 	$(MKDIR) build;
+	$(MKDIR) build$(SEP)interfaces;
 	$(MKDIR) bin;
 
 # _____________________________________________________

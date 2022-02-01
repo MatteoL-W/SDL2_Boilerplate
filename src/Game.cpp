@@ -5,7 +5,7 @@
 
 #include "../include/Game.hpp"
 #include "../include/Interface.hpp"
-#include "../include/MenuInterface.hpp"
+#include "../include/interfaces/MenuInterface.hpp"
 
 SDL_Renderer *Game::renderer = nullptr;
 
