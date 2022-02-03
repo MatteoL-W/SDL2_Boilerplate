@@ -39,13 +39,3 @@ void MenuInterface::render() {
 
     SDL_RenderPresent(Game::renderer);
 }
-
-/**
- * @brief Return true if the menu interface is active
- * @return
- */
-bool MenuInterface::isActive() {
-    if (game->inMenu())
-        return true;
-    return false;
-}

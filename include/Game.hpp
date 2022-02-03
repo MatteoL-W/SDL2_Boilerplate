@@ -25,11 +25,7 @@ public:
 
     bool running() { return isRunning; };
 
-    bool inMenu() {
-        if (currentInterface == "menu")
-            return true;
-        return false;
-    }
+    std::string getCurrentInterface() { return currentInterface; };
 
 private:
     SDL_Window *window;
