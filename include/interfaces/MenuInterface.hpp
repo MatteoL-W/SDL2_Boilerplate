@@ -19,18 +19,10 @@ public:
 
     void render();
 
-    bool isActive() {
-        if (game->getCurrentInterface() == name)
-            return true;
-        return false;
-    };
-
 private:
     Game *game;
 
     Menu *menu;
-
-    std::string name = "menu";
 
 };
 

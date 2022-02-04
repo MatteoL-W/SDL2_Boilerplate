@@ -3,6 +3,8 @@
 #include <iostream>
 #include <SDL2/SDL.h>
 
+#include "Interface.hpp"
+
 class Game {
 public:
     Game();
@@ -25,12 +27,12 @@ public:
 
     bool running() { return isRunning; };
 
-    std::string getCurrentInterface() { return currentInterface; };
+    Interface* getCurrentInterface() { return currentInterface; };
 
 private:
     SDL_Window *window;
 
     bool isRunning = false;
 
-    std::string currentInterface = "menu";
+    Interface* currentInterface;
 };

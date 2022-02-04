@@ -9,7 +9,6 @@
 
 SDL_Renderer *Game::renderer = nullptr;
 
-std::vector<Interface *> interfaces;
 MenuInterface *menuInterface = nullptr;
 
 /**
@@ -37,7 +36,7 @@ Game::Game() {
 
     menuInterface = new MenuInterface(this);
 
-    interfaces.push_back(menuInterface);
+    currentInterface = menuInterface;
 
     isRunning = true;
 }
@@ -59,11 +58,7 @@ void Game::clean() {
  * @brief Refresh the game and chose the right interface
  */
 void Game::refresh() {
-    for (size_t i = 0; i < interfaces.size(); i++) {
-        if (interfaces[i]->isActive()) {
-            interfaces[i]->handleEvents();
-            interfaces[i]->update();
-            interfaces[i]->render();
-        }
-    }
+    currentInterface->handleEvents();
+    currentInterface->update();
+    currentInterface->render();
 }
