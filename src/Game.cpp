@@ -1,7 +1,6 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #include <iostream>
-#include <vector>
 
 #include "../include/Game.hpp"
 #include "../include/Interface.hpp"
@@ -15,6 +14,7 @@ MenuInterface *menuInterface = nullptr;
  * @brief Initialize the game (assign the window, renderer, define the game as running)
  */
 Game::Game() {
+    /* Vérifications */
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         std::cout << "SDL_INIT HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
         exit(1);
@@ -30,12 +30,15 @@ Game::Game() {
         exit(1);
     }
 
+    /* Create SDL needs */
     window = SDL_CreateWindow("Change the name", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH,
                               WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
     renderer = SDL_CreateRenderer(window, -1, 0);
 
+    /* Define the interfaces */
     menuInterface = new MenuInterface(this);
 
+    /* Define the default interface*/
     currentInterface = menuInterface;
 
     isRunning = true;
