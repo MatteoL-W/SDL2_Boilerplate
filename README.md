@@ -1,4 +1,4 @@
-# SDL2_Boilerplate logic
+# SDL2_Boilerplate with interfaces system
 ### by [Mattéo Leclercq](https://github.com/MatteoL-W/)
 
 ![alt text](demo.png)
