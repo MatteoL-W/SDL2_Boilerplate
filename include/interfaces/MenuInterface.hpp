@@ -11,13 +11,13 @@ public:
         MenuInterface::menu = new Menu();
     }
 
-    ~MenuInterface();
+    ~MenuInterface() = default;
 
-    void handleEvents();
+    void handleEvents() override;
 
-    void update();
+    void update() override;
 
-    void render();
+    void render() override;
 
 private:
     Game *game;

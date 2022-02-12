@@ -1,5 +1,4 @@
 #include "../include/Menu.hpp"
-#include "../include/Text.hpp"
 #include "../include/Game.hpp"
 #include "../include/Utils.hpp"
 #include "../include/variables/Color.hpp"
@@ -12,8 +11,6 @@ Menu::Menu() {
             getPadding(Game::WINDOW_HEIGHT, titleText->getDestRect().h)
     );
 }
-
-Menu::~Menu() {}
 
 /**
  * @brief Update the menu

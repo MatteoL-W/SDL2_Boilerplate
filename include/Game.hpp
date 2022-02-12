@@ -27,12 +27,12 @@ public:
 
     bool running() { return isRunning; };
 
-    Interface* getCurrentInterface() { return currentInterface; };
+    Interface *getCurrentInterface() { return currentInterface; };
 
 private:
     SDL_Window *window;
 
     bool isRunning = false;
 
-    Interface* currentInterface;
+    Interface *currentInterface;
 };
