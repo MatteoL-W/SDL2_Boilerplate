@@ -10,24 +10,21 @@ project(PROJECT)
 
 # On windows
 if (WIN32)
-    set(SDL2_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/lib/SDL2-2.0.20/x86_64-w64-mingw32/include/SDL2)
+    set(SDL2_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/lib/SDL2-2.0.20/x86_64-w64-mingw32/include)
     set(SDL2_LIBRARIES ${CMAKE_SOURCE_DIR}/lib/SDL2-2.0.20/x86_64-w64-mingw32/lib/libSDL2.a;
                         ${CMAKE_SOURCE_DIR}/lib/SDL2-2.0.20/x86_64-w64-mingw32/lib/libSDL2main.a)
 
-    set(SDL2IMAGE_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/lib/SDL2_image-2.0.5/x86_64-w64-mingw32/include/SDL2)
+    set(SDL2IMAGE_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/lib/SDL2_image-2.0.5/x86_64-w64-mingw32/include)
     set(SDL2IMAGE_LIBRARIES ${CMAKE_SOURCE_DIR}/lib/SDL2_image-2.0.5/x86_64-w64-mingw32/lib/libSDL2_image.a)
 
-    set(SDL2TTF_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/lib/SDL2_ttf-2.0.18/x86_64-w64-mingw32/include/SDL2)
+    set(SDL2TTF_INCLUDE_DIRS ${CMAKE_SOURCE_DIR}/lib/SDL2_ttf-2.0.18/x86_64-w64-mingw32/include)
     set(SDL2TTF_LIBRARIES ${CMAKE_SOURCE_DIR}/lib/SDL2_ttf-2.0.18/x86_64-w64-mingw32/lib/libSDL2_ttf.a)
 
 # On linux
 else()
     find_package(SDL2 REQUIRED)
-    find_package(SDL_image REQUIRED)
-    find_package(SDL_ttf REQUIRED)
-    # If doesnt work, try this
-    # find_package(SDL2_image REQUIRED)
-    # find_package(SDL2_ttf REQUIRED)
+    find_package(SDL2_image REQUIRED)
+    find_package(SDL2_ttf REQUIRED)
 endif()
 
 # can be cleaner with : https://github.com/aminosbh/sdl2-cmake-modules
@@ -57,7 +54,7 @@ target_link_libraries(${PROJECT_NAME} ${SDL2_LIBRARIES} ${SDL2IMAGE_LIBRARIES} $
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 
 if (UNIX)
-    target_link_libraries(${PROJECT_NAME} -ldl -lSDL2 -lSDL2_image -lSDL2_ttf)
+    target_link_libraries(${PROJECT_NAME} -ldl)
 endif()
 
 if (WIN32) # Copy .dll to build folder
@@ -74,7 +71,7 @@ if (WIN32) # Copy .dll to build folder
         "${PROJECT_SOURCE_DIR}/lib/SDL2_image-2.0.5/x86_64-w64-mingw32/bin/zlib1.dll"
         "${PROJECT_SOURCE_DIR}/lib/SDL2_image-2.0.5/x86_64-w64-mingw32/bin/libtiff-5.dll"
         "${PROJECT_SOURCE_DIR}/lib/SDL2_image-2.0.5/x86_64-w64-mingw32/bin/libwebp-7.dll"
-        "${PROJECT_SOURCE_DIR}/lib/SDL2_ttf-2.0.18/x86_64-w64-mingw32/lib/libSDL2_ttf.a" 
+        "${PROJECT_SOURCE_DIR}/lib/SDL2_ttf-2.0.18/x86_64-w64-mingw32/lib/libSDL2_ttf.a"
         $<TARGET_FILE_DIR:${PROJECT_NAME}>
     )
 endif()
