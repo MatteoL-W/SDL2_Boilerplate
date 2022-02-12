@@ -5,19 +5,13 @@
 #include "../include/Game.hpp"
 #include "../include/Text.hpp"
 
-Text::Text() {
-}
-
-Text::~Text() {
-}
-
 /**
  * @brief Create a text
  * @param text
  * @param color
  * @param fontName
  */
-void Text::create(std::string text, SDL_Color color, std::string fontName) {
+void Text::create(const std::string text, const SDL_Color color, const std::string fontName) {
     Text::message = text;
     Text::color = color;
     Text::font = createFont(this, fontName);
@@ -37,7 +31,7 @@ void Text::draw() {
  * @brief Change the text
  * @param newText
  */
-void Text::changeText(std::string newText) {
+void Text::changeText(const std::string newText) {
     SDL_FreeSurface(Text::surface);
     SDL_DestroyTexture(Text::texture);
     Text::message = newText.c_str();
@@ -50,7 +44,7 @@ void Text::changeText(std::string newText) {
  * @brief Change the color
  * @param newText
  */
-void Text::changeColor(SDL_Color newColor) {
+void Text::changeColor(const SDL_Color newColor) {
     SDL_FreeSurface(Text::surface);
     SDL_DestroyTexture(Text::texture);
     Text::color = newColor;
@@ -64,7 +58,7 @@ void Text::changeColor(SDL_Color newColor) {
  * @param x
  * @param y
  */
-void Text::changeDestRect(int x, int y) {
+void Text::changeDestRect(const int x, const int y) {
     Text::destRect = createDestRect(Text::font, Text::message, x, y);
 }
 
@@ -72,7 +66,7 @@ void Text::changeDestRect(int x, int y) {
  * @brief Change the font (and its size)
  * @param size
  */
-void Text::changeFont(std::string name, int size) {
+void Text::changeFont(const std::string name, const int size) {
     TTF_CloseFont(Text::font);
     Text::size = size;
     Text::font = createFont(this, name);
@@ -83,7 +77,7 @@ void Text::changeFont(std::string name, int size) {
  * @param fontName
  * @return TTF_Font*
  */
-TTF_Font *createFont(Text *text, std::string fontName) {
+TTF_Font *createFont(Text *text, const std::string fontName) {
     std::string fullFontName = "./assets/fonts/" + fontName + ".ttf";
     TTF_Font *font = TTF_OpenFont(fullFontName.c_str(), text->getSize());
 
@@ -100,7 +94,7 @@ TTF_Font *createFont(Text *text, std::string fontName) {
  * @param text
  * @return SDL_Rect
  */
-SDL_Rect createDestRect(TTF_Font *font, std::string text, int x, int y) {
+SDL_Rect createDestRect(TTF_Font *font, const std::string text, const int x, const int y) {
     SDL_Rect destMessage;
     destMessage.x = x;
     destMessage.y = y;

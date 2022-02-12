@@ -3,7 +3,6 @@
 #include <iostream>
 
 #include "../include/Game.hpp"
-#include "../include/Interface.hpp"
 #include "../include/interfaces/MenuInterface.hpp"
 
 SDL_Renderer *Game::renderer = nullptr;
@@ -44,9 +43,7 @@ Game::Game() {
     isRunning = true;
 }
 
-Game::~Game() {
-
-}
+Game::~Game() = default;
 
 /**
  * @brief Quit the game properly

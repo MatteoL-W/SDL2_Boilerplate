@@ -5,9 +5,9 @@
 
 class Text {
 public:
-    Text();
+    Text() {}
 
-    ~Text();
+    ~Text() = default;
 
     void create(std::string text, SDL_Color color, std::string fontName);
 
