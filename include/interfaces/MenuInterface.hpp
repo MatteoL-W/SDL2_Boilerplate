@@ -6,9 +6,8 @@
 
 class MenuInterface : public Interface {
 public:
-    MenuInterface(Game *game) {
-        MenuInterface::game = game;
-        MenuInterface::menu = new Menu();
+    explicit MenuInterface(Game *game)
+            : game(game), menu(new Menu()) {
     }
 
     ~MenuInterface() = default;

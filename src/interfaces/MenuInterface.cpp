@@ -19,11 +19,7 @@ void MenuInterface::handleEvents() {
  * @brief Update the menu
  */
 void MenuInterface::update() {
-    SDL_RenderClear(Game::renderer);
-
     menu->update();
-
-    SDL_RenderPresent(Game::renderer);
 }
 
 /**
