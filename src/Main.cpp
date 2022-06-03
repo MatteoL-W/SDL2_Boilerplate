@@ -1,12 +1,12 @@
 #include <SDL2/SDL.h>
 
 #include "../include/Main.hpp"
-#include "../include/Game.hpp"
+#include "../include/Engine.hpp"
 
-Game *game = nullptr;
+Engine *game = nullptr;
 
 int main(int argc, char *argv[]) {
-    game = new Game();
+    game = new Engine();
 
     while (game->running()) {
         Uint32 frameStart = SDL_GetTicks();

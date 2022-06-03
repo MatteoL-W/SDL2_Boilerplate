@@ -1,12 +1,12 @@
 #pragma once
 
-#include "../Game.hpp"
+#include "../Engine.hpp"
 #include "../Interface.hpp"
 #include "../Menu.hpp"
 
 class MenuInterface : public Interface {
 public:
-    explicit MenuInterface(Game *game)
+    explicit MenuInterface(Engine *game)
             : game(game), menu(new Menu()) {
     }
 
@@ -19,7 +19,7 @@ public:
     void render() override;
 
 private:
-    Game *game;
+    Engine *game;
 
     Menu *menu;
 

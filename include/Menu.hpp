@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Text.hpp"
+#include "tools/Text.hpp"
 
 class Menu {
 public:
@@ -11,7 +11,4 @@ public:
     void update();
 
     void draw();
-
-private:
-    Text *titleText;
 };

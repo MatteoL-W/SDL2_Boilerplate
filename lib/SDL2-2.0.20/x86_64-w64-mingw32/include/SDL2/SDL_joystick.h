@@ -689,7 +689,7 @@ extern DECLSPEC int SDLCALL SDL_JoystickEventState(int state);
  * SDL makes no promises about what part of the joystick any given axis refers
  * to. Your game should have some sort of configuration UI to let users
  * specify what each axis should be bound to. Alternately, SDL's higher-level
- * Game Controller API makes a great effort to apply order to this lower-level
+ * Engine Controller API makes a great effort to apply order to this lower-level
  * interface, so you know that a specific axis is the "left thumb stick," etc.
  *
  * The value returned by SDL_JoystickGetAxis() is a signed integer (-32768 to

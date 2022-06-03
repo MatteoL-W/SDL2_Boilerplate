@@ -5,11 +5,11 @@
 
 #include "Interface.hpp"
 
-class Game {
+class Engine {
 public:
-    Game();
+    Engine();
 
-    ~Game();
+    ~Engine() = default;
 
     void clean();
 
@@ -17,9 +17,11 @@ public:
 
     SDL_Event event;
 
-    static const int WINDOW_WIDTH = 750;
+    static const int WINDOW_WIDTH = 1200;
 
     static const int WINDOW_HEIGHT = 750;
+
+    constexpr static const float aspectRatio = Engine::WINDOW_WIDTH / (float) Engine::WINDOW_HEIGHT;
 
     static SDL_Renderer *renderer;
 
@@ -32,7 +34,13 @@ public:
 private:
     SDL_Window *window;
 
+    SDL_GLContext context;
+
     bool isRunning = false;
 
     Interface *currentInterface;
+
+    static void initiateWindowSize();
+
+    static void initiateSDLLibs();
 };

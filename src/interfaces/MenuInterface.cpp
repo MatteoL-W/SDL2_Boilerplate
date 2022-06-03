@@ -26,9 +26,5 @@ void MenuInterface::update() {
  * @brief Render the menu
  */
 void MenuInterface::render() {
-    SDL_RenderClear(Game::renderer);
-
     menu->draw();
-
-    SDL_RenderPresent(Game::renderer);
 }
