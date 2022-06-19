@@ -10,6 +10,8 @@
 
 Thanks to [Enguerrand](https://github.com/dsmtE) for the CMake help 😄
 
-The CMake should be working with **MinGW builder** and **Linux** !
+(ToDo: missing SDL2 dependencies for linux, check branch OPENGL_COMPATIBILITY to see the full readme and final version)
 
 # Don't forget to remove this and write your own README.md 😄
+
+See use on [EKTOKLEPTO (CMAKE)](https://github.com/MatteoL-W/EKTOKLEPTO), [天谷 (CMAKE)](https://github.com/MatteoL-W/GAMEJAM_COLOR_2022), [POKIMAC(MAKE)](https://github.com/MatteoL-W/POKIMAC)
