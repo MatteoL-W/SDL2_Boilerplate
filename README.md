@@ -1,4 +1,9 @@
 # SDL2_Boilerplate with interfaces system
+
+[OPENGL COMPATIBILITY](https://github.com/MatteoL-W/SDL2_Boilerplate/tree/OPENGL_COMPAT) -> branch OPENGL_COMPAT
+
+[MAKEFILE VERSION](https://github.com/MatteoL-W/SDL2_Boilerplate/tree/WITH_MAKEFILE_ONLY) -> branch WITH_MAKEFILE_ONLY
+
 ### by [Mattéo Leclercq](https://github.com/MatteoL-W/)
 
 ![alt text](demo.png)
