@@ -4,7 +4,7 @@
 #include <GL/glu.h>
 #include "SDL2/SDL_ttf.h"
 #include <iostream>
-#include <glm/vec2.hpp>
+#include "glm/vec2.hpp"
 
 class Text {
 public:

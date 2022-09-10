@@ -1,6 +1,6 @@
-#include "../include/Menu.hpp"
-#include "../include/Engine.hpp"
-#include "../include/variables/Color.hpp"
+#include "Menu.hpp"
+#include "Engine.hpp"
+#include "variables/Color.hpp"
 
 Text* titleText;
 

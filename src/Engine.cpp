@@ -5,8 +5,8 @@
 #include <GL/glu.h>
 #include <iostream>
 
-#include "../include/Engine.hpp"
-#include "../include/interfaces/MenuInterface.hpp"
+#include "Engine.hpp"
+#include "interfaces/MenuInterface.hpp"
 
 SDL_Renderer *Engine::renderer = nullptr;
 

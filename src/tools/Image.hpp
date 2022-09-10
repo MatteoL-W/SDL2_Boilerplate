@@ -5,7 +5,7 @@
 #include "SDL2/SDL_ttf.h"
 #include <iostream>
 #include <utility>
-#include <glm/vec2.hpp>
+#include "glm/vec2.hpp"
 
 class Image {
 public:

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../Engine.hpp"
-#include "../Interface.hpp"
-#include "../Menu.hpp"
+#include "Engine.hpp"
+#include "interfaces/Interface.hpp"
+#include "Menu/Menu.hpp"
 
 class MenuInterface : public Interface {
 public:

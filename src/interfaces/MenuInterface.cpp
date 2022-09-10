@@ -1,6 +1,6 @@
 #include <SDL2/SDL.h>
 
-#include "../../include/interfaces/MenuInterface.hpp"
+#include "MenuInterface.hpp"
 
 /**
  * @brief Handle SDL Events in the menu
