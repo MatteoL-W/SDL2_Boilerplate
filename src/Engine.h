@@ -3,7 +3,7 @@
 #include <iostream>
 #include "SDL2/SDL.h"
 
-#include "interfaces/Interface.hpp"
+#include "interfaces/Interface.h"
 
 class Engine {
 public:
@@ -13,8 +13,8 @@ public:
     void clean();
     void refresh();
 
-    SDL_Event event;
-    static SDL_Renderer *renderer;
+    SDL_Event _event;
+    static SDL_Renderer *_renderer;
 
     static const int WINDOW_WIDTH = 1200;
     static const int WINDOW_HEIGHT = 750;

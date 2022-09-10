@@ -1,8 +1,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
-#include "Engine.hpp"
-#include "Text.hpp"
+#include "Engine.h"
+#include "Text.h"
 
 void Text::generateSurface() {
     glEnable(GL_TEXTURE_2D);

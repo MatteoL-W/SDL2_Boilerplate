@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 
-#include "main.hpp"
-#include "Engine.hpp"
+#include "main.h"
+#include "Engine.h"
 
 Engine *game = nullptr;
 
@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
 
         engine.refresh();
 
-        // FPS Handle (custom in Main.hpp)
+        // FPS Handle (custom in main.h)
         unsigned int frameTime = SDL_GetTicks() - frameStart;
         if (FRAME_DELAY > frameTime) {
             SDL_Delay(FRAME_DELAY - frameTime);

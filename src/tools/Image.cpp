@@ -1,8 +1,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "Engine.hpp"
-#include "Image.hpp"
+#include "Engine.h"
+#include "Image.h"
 
 void Image::generateSurface() {
     glEnable(GL_TEXTURE_2D);

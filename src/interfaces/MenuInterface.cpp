@@ -1,16 +1,16 @@
 #include <SDL2/SDL.h>
 
-#include "MenuInterface.hpp"
+#include "MenuInterface.h"
 
 /**
  * @brief Handle SDL Events in the menu
  */
 void MenuInterface::handleEvents() {
-    SDL_Event event = game->event;
+    SDL_Event event = engine->_event;
     SDL_PollEvent(&event);
 
     if (event.type == SDL_QUIT) {
-        game->setRunning(false);
+        engine->setRunning(false);
     }
 
 }

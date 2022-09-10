@@ -1,6 +1,6 @@
 #pragma once
 
-#include "tools/Text.hpp"
+#include "tools/Text.h"
 
 class Menu {
 public:

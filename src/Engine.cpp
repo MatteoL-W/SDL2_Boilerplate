@@ -5,10 +5,10 @@
 #include <GL/glu.h>
 #include <iostream>
 
-#include "Engine.hpp"
-#include "interfaces/MenuInterface.hpp"
+#include "Engine.h"
+#include "interfaces/MenuInterface.h"
 
-SDL_Renderer *Engine::renderer = nullptr;
+SDL_Renderer *Engine::_renderer = nullptr;
 
 MenuInterface *menuInterface = nullptr;
 
@@ -76,7 +76,7 @@ void Engine::initiateSDLLibs() {
 void Engine::clean() {
     SDL_GL_DeleteContext(context);
     SDL_DestroyWindow(window);
-    SDL_DestroyRenderer(renderer);
+    SDL_DestroyRenderer(_renderer);
     SDL_Quit();
 }
 
@@ -86,7 +86,7 @@ void Engine::clean() {
 void Engine::refresh() {
     currentInterface->update();
 
-    SDL_RenderClear(Engine::renderer);
+    SDL_RenderClear(Engine::_renderer);
     glClear(GL_COLOR_BUFFER_BIT);
     currentInterface->render();
     SDL_GL_SwapWindow(window);
