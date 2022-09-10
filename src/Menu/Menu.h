@@ -5,10 +5,8 @@
 class Menu {
 public:
     Menu();
-
     ~Menu() = default;
 
     void update();
-
     void draw();
 };

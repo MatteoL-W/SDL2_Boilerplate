@@ -1,20 +1,19 @@
 #pragma once
 
-#include "SDL2/SDL_mixer.h"
+#include <SDL2/SDL_mixer.h>
 
 class Music {
 public:
-    explicit Music(const char *path)
-            : music(Mix_LoadMUS(path)) {};
+    explicit Music(const char *p_path)
+            : _music(Mix_LoadMUS(p_path)) {};
 
     ~Music() = default;
 
-    void play(int loops) { Mix_PlayMusic(music, loops); };
-
+    void play(int loops) { Mix_PlayMusic(_music, loops); };
     static void stop() { Mix_HaltMusic(); };
 
 private:
-    Mix_Music *music;
+    Mix_Music *_music;
 };
 
 

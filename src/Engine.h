@@ -13,24 +13,26 @@ public:
     void clean();
     void refresh();
 
-    SDL_Event _event;
-    static SDL_Renderer *_renderer;
+    void setRunning(bool p_newState) { _isRunning = p_newState; }
+    bool running() const { return _isRunning; };
+
+    Interface *getCurrentInterface() { return _currentInterface; };
+
+    SDL_Event event;
+    static SDL_Renderer *renderer;
 
     static const int WINDOW_WIDTH = 1200;
     static const int WINDOW_HEIGHT = 750;
     constexpr static const float aspectRatio = Engine::WINDOW_WIDTH / (float) Engine::WINDOW_HEIGHT;
 
-    void setRunning(bool newState) { isRunning = newState; }
-    bool running() const { return isRunning; };
-
-    Interface *getCurrentInterface() { return currentInterface; };
 
 private:
     static void initiateWindowSize();
     static void initiateSDLLibs();
 
-    Interface *currentInterface;
-    SDL_Window *window;
-    SDL_GLContext context;
-    bool isRunning = false;
+    Interface *_currentInterface;
+    SDL_Window *_window;
+    SDL_GLContext _context;
+
+    bool _isRunning = false;
 };

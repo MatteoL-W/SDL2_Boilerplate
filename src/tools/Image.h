@@ -2,15 +2,15 @@
 
 #include <GL/gl.h>
 #include <GL/glu.h>
-#include "SDL2/SDL_ttf.h"
+#include <glm/vec2.hpp>
+#include <SDL2/SDL_ttf.h>
 #include <iostream>
 #include <utility>
-#include "glm/vec2.hpp"
 
 class Image {
 public:
     Image(std::string p_path, float p_x = 0, float p_y = 0, float p_divider = 0)
-            : path(std::move(p_path)), x(p_x), y(p_y), divider(p_divider) {
+            : _path(std::move(p_path)), _x(p_x), _y(p_y), _divider(p_divider) {
         apply();
     };
 
@@ -25,16 +25,12 @@ public:
 
 private:
     void generateSurface();
-
     void bindTexture();
 
-    std::string path;
-
-    SDL_Surface* imageSurface;
-
-    GLuint textureBind = 0;
-
-    float x, y, divider;
+    std::string _path;
+    SDL_Surface* _imageSurface;
+    GLuint _textureBind = 0;
+    float _x, _y, _divider;
 };
 
 

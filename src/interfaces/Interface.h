@@ -1,7 +1,5 @@
 #pragma once
 
-#include <iostream>
-
 class Interface {
 public:
     virtual void handleEvents() = 0;

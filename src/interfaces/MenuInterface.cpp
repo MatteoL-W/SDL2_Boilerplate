@@ -2,29 +2,20 @@
 
 #include "MenuInterface.h"
 
-/**
- * @brief Handle SDL Events in the menu
- */
 void MenuInterface::handleEvents() {
-    SDL_Event event = engine->_event;
+    SDL_Event event = _engine->event;
     SDL_PollEvent(&event);
 
     if (event.type == SDL_QUIT) {
-        engine->setRunning(false);
+        _engine->setRunning(false);
     }
 
 }
 
-/**
- * @brief Update the menu
- */
 void MenuInterface::update() {
-    menu->update();
+    _menu->update();
 }
 
-/**
- * @brief Render the menu
- */
 void MenuInterface::render() {
-    menu->draw();
+    _menu->draw();
 }

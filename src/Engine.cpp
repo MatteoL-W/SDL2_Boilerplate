@@ -8,8 +8,7 @@
 #include "Engine.h"
 #include "interfaces/MenuInterface.h"
 
-SDL_Renderer *Engine::_renderer = nullptr;
-
+SDL_Renderer *Engine::renderer = nullptr;
 MenuInterface *menuInterface = nullptr;
 
 /**
@@ -19,20 +18,19 @@ Engine::Engine() {
     initiateSDLLibs();
 
     /* Create SDL needs */
-    window = SDL_CreateWindow("Thomas Was Alone", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH,
-                              WINDOW_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
+    _window = SDL_CreateWindow("Thomas Was Alone", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH,
+                               WINDOW_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
 
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
-    context = SDL_GL_CreateContext(window);
+    _context = SDL_GL_CreateContext(_window);
 
-    if (context == nullptr) {
-        std::string error = SDL_GetError();
-        std::cout << "Erreur lors de la creation du contexte OpenGL";
+    if (_context == nullptr) {
+        std::cout << "Error creating OpenGL context : " << SDL_GetError();
 
-        SDL_DestroyWindow(window);
+        SDL_DestroyWindow(_window);
         SDL_Quit();
         exit(1);
     }
@@ -41,9 +39,9 @@ Engine::Engine() {
     menuInterface = new MenuInterface(this);
 
     /* Define the default interface*/
-    currentInterface = menuInterface;
+    _currentInterface = menuInterface;
 
-    isRunning = true;
+    _isRunning = true;
 
     initiateWindowSize();
 }
@@ -74,9 +72,9 @@ void Engine::initiateSDLLibs() {
  * @brief Quit the engine properly
  */
 void Engine::clean() {
-    SDL_GL_DeleteContext(context);
-    SDL_DestroyWindow(window);
-    SDL_DestroyRenderer(_renderer);
+    SDL_GL_DeleteContext(_context);
+    SDL_DestroyWindow(_window);
+    SDL_DestroyRenderer(renderer);
     SDL_Quit();
 }
 
@@ -84,14 +82,14 @@ void Engine::clean() {
  * @brief Chose the right interface and refresh execute its method
  */
 void Engine::refresh() {
-    currentInterface->update();
+    _currentInterface->update();
 
-    SDL_RenderClear(Engine::_renderer);
+    SDL_RenderClear(Engine::renderer);
     glClear(GL_COLOR_BUFFER_BIT);
-    currentInterface->render();
-    SDL_GL_SwapWindow(window);
+    _currentInterface->render();
+    SDL_GL_SwapWindow(_window);
 
-    currentInterface->handleEvents();
+    _currentInterface->handleEvents();
 }
 
 /**
