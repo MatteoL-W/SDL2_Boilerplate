@@ -17,10 +17,9 @@ public:
     ~Image() = default;
 
     void draw();
-    void draw(glm::vec2 BL, float width, float height);
+    void draw(glm::vec2 p_BL, float p_width, float p_height);
 
     void apply() { generateSurface(); bindTexture(); }
-
     void deleteTexture();
 
 private:

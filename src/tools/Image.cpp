@@ -31,16 +31,16 @@ void Image::draw() {
     glDisable(GL_BLEND);
 }
 
-void Image::draw(glm::vec2 BL, float width, float height) {
+void Image::draw(glm::vec2 p_BL, float p_width, float p_height) {
     glEnable(GL_BLEND);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, _imageSurface->w, _imageSurface->h, 0,
                  GL_RGBA, GL_UNSIGNED_BYTE, _imageSurface->pixels);
 
     glBegin(GL_QUADS);
-    glTexCoord2d(0, 1); glVertex2f(BL.x, BL.y);
-    glTexCoord2d(1, 1); glVertex2f(BL.x + width, BL.y);
-    glTexCoord2d(1, 0); glVertex2f(BL.x + width, BL.y + height);
-    glTexCoord2d(0, 0); glVertex2f(BL.x, BL.y + height);
+    glTexCoord2d(0, 1); glVertex2f(p_BL.x, p_BL.y);
+    glTexCoord2d(1, 1); glVertex2f(p_BL.x + p_width, p_BL.y);
+    glTexCoord2d(1, 0); glVertex2f(p_BL.x + p_width, p_BL.y + p_height);
+    glTexCoord2d(0, 0); glVertex2f(p_BL.x, p_BL.y + p_height);
     glEnd();
 
     glDisable(GL_BLEND);
