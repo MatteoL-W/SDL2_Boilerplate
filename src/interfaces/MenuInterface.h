@@ -6,8 +6,8 @@
 
 class MenuInterface : public Interface {
 public:
-    explicit MenuInterface(Engine *p_engine)
-            : _engine(p_engine), _menu(new Menu()) {
+    explicit MenuInterface()
+            : _menu(new Menu()) {
     }
     ~MenuInterface() = default;
 
@@ -16,7 +16,6 @@ public:
     void render() override;
 
 private:
-    Engine *_engine;
     Menu *_menu;
 };
 

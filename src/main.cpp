@@ -3,15 +3,16 @@
 #include "main.h"
 #include "Engine.h"
 
-Engine *game = nullptr;
+Engine *engine = nullptr;
+Engine* Engine::_instance;
 
 int main(int argc, char *argv[]) {
-    Engine engine;
+    engine = Engine::GetInstance();
 
-    while (engine.running()) {
+    while (engine->running()) {
         Uint32 frameStart = SDL_GetTicks();
 
-        engine.refresh();
+        engine->refresh();
 
         // FPS Handle (custom in main.h)
         unsigned int frameTime = SDL_GetTicks() - frameStart;

@@ -1,8 +1,7 @@
 #include "Menu.h"
-#include "Engine.h"
 #include "variables/Color.h"
 
-Text* titleText;
+Text *titleText;
 
 Menu::Menu() {
     titleText = new Text("Menu", TTF_OpenFont("./assets/fonts/Press.ttf", 50), WhiteColor, 0, 0);

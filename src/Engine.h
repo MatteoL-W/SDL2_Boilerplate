@@ -7,8 +7,10 @@
 
 class Engine {
 public:
-    Engine();
     ~Engine() = default;
+
+    static Engine *GetInstance();
+    static Engine* _instance;
 
     void clean();
     void refresh();
@@ -27,6 +29,7 @@ public:
 
 
 private:
+    Engine();
     static void initiateWindowSize();
     static void initiateSDLLibs();
 

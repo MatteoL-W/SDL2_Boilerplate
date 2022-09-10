@@ -36,7 +36,7 @@ Engine::Engine() {
     }
 
     /* Define the interfaces */
-    menuInterface = new MenuInterface(this);
+    menuInterface = new MenuInterface();
 
     /* Define the default interface*/
     _currentInterface = menuInterface;
@@ -44,6 +44,13 @@ Engine::Engine() {
     _isRunning = true;
 
     initiateWindowSize();
+}
+
+Engine *Engine::GetInstance() {
+    if (_instance == nullptr) {
+        _instance = new Engine();
+    }
+    return _instance;
 }
 
 void Engine::initiateSDLLibs() {
