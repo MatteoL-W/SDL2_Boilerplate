@@ -1,8 +1,9 @@
 #include <SDL2/SDL.h>
 
-#include "MenuInterface.h"
+#include "Engine.h"
+#include "MenuState.h"
 
-void MenuInterface::handleEvents() {
+void MenuState::handleEvents() {
     Engine* engine = Engine::GetInstance();
     SDL_Event event = engine->event;
     SDL_PollEvent(&event);
@@ -13,10 +14,10 @@ void MenuInterface::handleEvents() {
 
 }
 
-void MenuInterface::update() {
-    _menu->update();
+void MenuState::update() {
+    _menu.update();
 }
 
-void MenuInterface::render() {
-    _menu->draw();
+void MenuState::render() {
+    _menu.draw();
 }

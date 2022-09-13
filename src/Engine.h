@@ -3,12 +3,13 @@
 #include <iostream>
 #include "SDL2/SDL.h"
 
-#include "interfaces/Interface.h"
+#include "interfaces/StateInterface.h"
 
 class Engine {
 public:
     ~Engine() = default;
 
+    // Singleton
     static Engine *GetInstance();
     static Engine* _instance;
 
@@ -18,7 +19,8 @@ public:
     void setRunning(bool p_newState) { _isRunning = p_newState; }
     bool running() const { return _isRunning; };
 
-    Interface *getCurrentInterface() { return _currentInterface; };
+    // State Machine
+    StateInterface *getCurrentState() { return _currentState; };
 
     SDL_Event event;
     static SDL_Renderer *renderer;
@@ -33,7 +35,7 @@ private:
     static void initiateWindowSize();
     static void initiateSDLLibs();
 
-    Interface *_currentInterface;
+    StateInterface *_currentState;
     SDL_Window *_window;
     SDL_GLContext _context;
 

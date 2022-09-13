@@ -6,10 +6,10 @@
 #include <iostream>
 
 #include "Engine.h"
-#include "interfaces/MenuInterface.h"
+#include "interfaces/MenuState.h"
 
 SDL_Renderer *Engine::renderer = nullptr;
-MenuInterface *menuInterface = nullptr;
+MenuState *menuInterface = nullptr;
 
 /**
  * @brief Initialize the engine (assign the window, renderer, define the engine as running)
@@ -36,10 +36,10 @@ Engine::Engine() {
     }
 
     /* Define the interfaces */
-    menuInterface = new MenuInterface();
+    menuInterface = new MenuState();
 
     /* Define the default interface*/
-    _currentInterface = menuInterface;
+    _currentState = menuInterface;
 
     _isRunning = true;
 
@@ -48,7 +48,7 @@ Engine::Engine() {
 
 Engine *Engine::GetInstance() {
     if (_instance == nullptr) {
-        _instance = new Engine();
+        _instance = new Engine{};
     }
     return _instance;
 }
@@ -89,14 +89,14 @@ void Engine::clean() {
  * @brief Chose the right interface and refresh execute its method
  */
 void Engine::refresh() {
-    _currentInterface->update();
+    _currentState->update();
 
     SDL_RenderClear(Engine::renderer);
     glClear(GL_COLOR_BUFFER_BIT);
-    _currentInterface->render();
+    _currentState->render();
     SDL_GL_SwapWindow(_window);
 
-    _currentInterface->handleEvents();
+    _currentState->handleEvents();
 }
 
 /**

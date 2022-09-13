@@ -1,6 +1,6 @@
 #pragma once
 
-class Interface {
+class StateInterface {
 public:
     virtual void handleEvents() = 0;
     virtual void update() = 0;
