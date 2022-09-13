@@ -17,9 +17,8 @@ MenuState::MenuState() {
     );
 }
 
-void MenuState::handleEvents() {
+void MenuState::handleEvents(SDL_Event event) {
     Engine* engine = Engine::GetInstance();
-    SDL_Event event = engine->event;
     SDL_PollEvent(&event);
 
     if (event.type == SDL_QUIT) {

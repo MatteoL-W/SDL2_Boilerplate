@@ -6,7 +6,7 @@ class MenuState : public IState {
 public:
     MenuState();
 
-    void handleEvents() override;
+    void handleEvents(SDL_Event event) override;
     void update() override;
     void render() override;
 };

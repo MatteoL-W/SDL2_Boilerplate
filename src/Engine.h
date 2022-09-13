@@ -22,8 +22,8 @@ public:
     // State Machine
     IState *getCurrentState() { return _currentState; };
 
-    SDL_Event event;
-    static SDL_Renderer *renderer;
+    SDL_Event _event;
+    static SDL_Renderer *_renderer;
 
     static const int WINDOW_WIDTH = 1200;
     static const int WINDOW_HEIGHT = 750;

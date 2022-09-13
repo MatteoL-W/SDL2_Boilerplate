@@ -6,7 +6,7 @@
 #include "State/Menu/MenuState.h"
 #include "Tools/Initializer/Initializer.h"
 
-SDL_Renderer *Engine::renderer = nullptr;
+SDL_Renderer *Engine::_renderer = nullptr;
 MenuState *menuInterface = nullptr;
 
 /**
@@ -51,7 +51,7 @@ Engine *Engine::GetInstance() {
 void Engine::clean() {
     SDL_GL_DeleteContext(_context);
     SDL_DestroyWindow(_window);
-    SDL_DestroyRenderer(renderer);
+    SDL_DestroyRenderer(_renderer);
     SDL_Quit();
 }
 
@@ -61,12 +61,13 @@ void Engine::clean() {
 void Engine::refresh() {
     _currentState->update();
 
-    SDL_RenderClear(Engine::renderer);
+    // OpenGL Rendering
+    SDL_RenderClear(Engine::_renderer);
     glClear(GL_COLOR_BUFFER_BIT);
     _currentState->render();
     SDL_GL_SwapWindow(_window);
 
-    _currentState->handleEvents();
+    _currentState->handleEvents(_event);
 }
 
 /**
@@ -78,7 +79,7 @@ void Engine::initiateWindowSize() {
     glLoadIdentity();
 
     gluOrtho2D(
-            0, 1200,
-            0, 720
+            0, WINDOW_WIDTH,
+            0, WINDOW_HEIGHT
     );
 }
