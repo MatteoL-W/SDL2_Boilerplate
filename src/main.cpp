@@ -9,7 +9,7 @@ Engine* Engine::_instance;
 int main(int argc, char *argv[]) {
     engine = Engine::GetInstance();
 
-    while (engine->running()) {
+    while (engine->isRunning()) {
         Uint32 frameStart = SDL_GetTicks();
 
         engine->refresh();

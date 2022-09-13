@@ -22,7 +22,7 @@ void MenuState::handleEvents(SDL_Event event) {
     SDL_PollEvent(&event);
 
     if (event.type == SDL_QUIT) {
-        engine->setRunning(false);
+        engine->clean();
     }
 
 }
