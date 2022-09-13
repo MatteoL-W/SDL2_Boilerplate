@@ -1,9 +1,9 @@
 #pragma once
 
-#include "interfaces/StateInterface.h"
+#include "interfaces/IState.h"
 #include "Menu/Menu.h"
 
-class MenuState : public StateInterface {
+class MenuState : public IState {
 public:
     void handleEvents() override;
     void update() override;

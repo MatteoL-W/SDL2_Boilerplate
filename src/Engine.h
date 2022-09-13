@@ -3,7 +3,7 @@
 #include <iostream>
 #include "SDL2/SDL.h"
 
-#include "interfaces/StateInterface.h"
+#include "interfaces/IState.h"
 
 class Engine {
 public:
@@ -20,7 +20,7 @@ public:
     bool running() const { return _isRunning; };
 
     // State Machine
-    StateInterface *getCurrentState() { return _currentState; };
+    IState *getCurrentState() { return _currentState; };
 
     SDL_Event event;
     static SDL_Renderer *renderer;
@@ -34,7 +34,7 @@ private:
     Engine();
     static void initiateWindowSize();
 
-    StateInterface *_currentState;
+    IState *_currentState;
     SDL_Window *_window;
     SDL_GLContext _context;
 
