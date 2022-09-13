@@ -7,7 +7,7 @@ Menu::Menu() {
     titleText = new Text(
         "Menu",
         TTF_OpenFont("./assets/fonts/Press.ttf", 50),
-        WhiteColor,
+        Color::White,
         0,
         0
     );
