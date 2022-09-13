@@ -2,8 +2,8 @@
 
 #include <GL/gl.h>
 #include <GL/glu.h>
-#include <glm/vec2.hpp>
-#include <SDL2/SDL_ttf.h>
+#include "glm/vec2.hpp"
+#include "SDL2/SDL_ttf.h"
 #include <iostream>
 
 class Text {

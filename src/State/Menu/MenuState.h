@@ -1,15 +1,13 @@
 #pragma once
 
-#include "interfaces/IState.h"
-#include "Menu/Menu.h"
+#include "State/IState.h"
 
 class MenuState : public IState {
 public:
+    MenuState();
+
     void handleEvents() override;
     void update() override;
     void render() override;
-
-private:
-    Menu _menu{};
 };
 

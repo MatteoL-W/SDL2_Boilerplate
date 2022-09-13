@@ -3,7 +3,7 @@
 #include <iostream>
 #include "SDL2/SDL.h"
 
-#include "interfaces/IState.h"
+#include "State/IState.h"
 
 class Engine {
 public:

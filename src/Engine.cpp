@@ -3,8 +3,8 @@
 #include <iostream>
 
 #include "Engine.h"
-#include "interfaces/MenuState.h"
-#include "SDL_Initializer/SDL_Initializer.h"
+#include "State/Menu/MenuState.h"
+#include "Tools/Initializer/Initializer.h"
 
 SDL_Renderer *Engine::renderer = nullptr;
 MenuState *menuInterface = nullptr;
@@ -13,7 +13,7 @@ MenuState *menuInterface = nullptr;
  * @brief Initialize the engine (assign the window, renderer, define the engine as running)
  */
 Engine::Engine() {
-    SDL_Initializer::initialize();
+    Initializer::initialize();
 
     _window = SDL_CreateWindow(
         "PROJECT",
@@ -24,11 +24,11 @@ Engine::Engine() {
         SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN
     );
 
-    SDL_Initializer::setOpenGLAttribute();
+    Initializer::setOpenGLAttribute();
     _context = SDL_GL_CreateContext(_window);
-    SDL_Initializer::verifyOpenGLContext(_context, _window);
+    Initializer::verifyOpenGLContext(_context, _window);
 
-    /* Define the interfaces */
+    /* Define the Menu */
     menuInterface = new MenuState();
 
     /* Define the default interface*/

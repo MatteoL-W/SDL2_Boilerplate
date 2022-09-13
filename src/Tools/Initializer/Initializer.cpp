@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "SDL_Initializer.h"
+#include "Initializer.h"
 
-void SDL_Initializer::initialize() {
+void Initializer::initialize() {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         std::cout << "SDL_INIT HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
         exit(1);
@@ -24,13 +24,13 @@ void SDL_Initializer::initialize() {
     }
 }
 
-void SDL_Initializer::setOpenGLAttribute() {
+void Initializer::setOpenGLAttribute() {
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
     SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
     SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 }
 
-void SDL_Initializer::verifyOpenGLContext(SDL_GLContext p_context, SDL_Window* p_window) {
+void Initializer::verifyOpenGLContext(SDL_GLContext p_context, SDL_Window* p_window) {
     if (p_context == nullptr) {
         std::cout << "Error creating OpenGL context : " << SDL_GetError();
 
