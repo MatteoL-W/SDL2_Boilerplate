@@ -33,7 +33,6 @@ public:
 private:
     Engine();
     static void initiateWindowSize();
-    static void initiateSDLLibs();
 
     StateInterface *_currentState;
     SDL_Window *_window;

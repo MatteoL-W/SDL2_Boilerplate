@@ -1,12 +1,10 @@
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_mixer.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <iostream>
 
 #include "Engine.h"
 #include "interfaces/MenuState.h"
+#include "SDL_Initializer/SDL_Initializer.h"
 
 SDL_Renderer *Engine::renderer = nullptr;
 MenuState *menuInterface = nullptr;
@@ -15,25 +13,20 @@ MenuState *menuInterface = nullptr;
  * @brief Initialize the engine (assign the window, renderer, define the engine as running)
  */
 Engine::Engine() {
-    initiateSDLLibs();
+    SDL_Initializer::initialize();
 
-    /* Create SDL needs */
-    _window = SDL_CreateWindow("Thomas Was Alone", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH,
-                               WINDOW_HEIGHT, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN);
+    _window = SDL_CreateWindow(
+        "PROJECT",
+        SDL_WINDOWPOS_CENTERED,
+        SDL_WINDOWPOS_CENTERED,
+        WINDOW_WIDTH,
+        WINDOW_HEIGHT,
+        SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN
+    );
 
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
-    SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-    SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
-
+    SDL_Initializer::setOpenGLAttribute();
     _context = SDL_GL_CreateContext(_window);
-
-    if (_context == nullptr) {
-        std::cout << "Error creating OpenGL context : " << SDL_GetError();
-
-        SDL_DestroyWindow(_window);
-        SDL_Quit();
-        exit(1);
-    }
+    SDL_Initializer::verifyOpenGLContext(_context, _window);
 
     /* Define the interfaces */
     menuInterface = new MenuState();
@@ -42,7 +35,6 @@ Engine::Engine() {
     _currentState = menuInterface;
 
     _isRunning = true;
-
     initiateWindowSize();
 }
 
@@ -51,28 +43,6 @@ Engine *Engine::GetInstance() {
         _instance = new Engine{};
     }
     return _instance;
-}
-
-void Engine::initiateSDLLibs() {
-    if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-        std::cout << "SDL_INIT HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
-        exit(1);
-    }
-
-    if (!IMG_Init(IMG_INIT_PNG)) {
-        std::cout << "IMG_Init HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
-        exit(1);
-    }
-
-    if (TTF_Init() < 0) {
-        std::cout << "TTF_Init HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
-        exit(1);
-    }
-
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024) == -1) {
-        printf("Mix_OpenAudio: %s\n", Mix_GetError());
-        exit(1);
-    }
 }
 
 /**
