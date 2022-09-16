@@ -10,7 +10,7 @@
  * @brief Initialize the engine (assign the window and opengl, define the engine as running)
  */
 Engine::Engine() {
-    Initializer::initialize();
+    Tools::Initializer::initialize();
 
     _window = SDL_CreateWindow(
         "PROJECT",
@@ -21,9 +21,9 @@ Engine::Engine() {
         SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN
     );
 
-    Initializer::setOpenGLAttribute();
+    Tools::Initializer::setOpenGLAttribute();
     _context = SDL_GL_CreateContext(_window);
-    Initializer::verifyOpenGLContext(_context, _window);
+    Tools::Initializer::verifyOpenGLContext(_context, _window);
 
     /* Define the states */
     _menuInterface = new MenuState{};

@@ -2,13 +2,13 @@
 
 #include "Engine.h"
 #include "MenuState.h"
-#include "tools/Text/Text.h"
+#include "Tools/Text/Text.h"
 #include "Constant/Color.h"
 
-Text *titleText;
+Tools::Text *titleText;
 
 MenuState::MenuState() {
-    titleText = new Text(
+    titleText = new Tools::Text(
             "Menu",
             TTF_OpenFont("./assets/fonts/Press.ttf", 50),
             Color::White,

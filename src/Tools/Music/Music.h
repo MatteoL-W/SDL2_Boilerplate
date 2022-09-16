@@ -2,18 +2,20 @@
 
 #include "SDL2/SDL_mixer.h"
 
-class Music {
-public:
-    explicit Music(const char *p_path)
-            : _music(Mix_LoadMUS(p_path)) {};
+namespace Tools {
+    class Music {
+    public:
+        explicit Music(const char *p_path)
+                : _music(Mix_LoadMUS(p_path)) {};
 
-    ~Music() = default;
+        ~Music() = default;
 
-    void play(int loops) { Mix_PlayMusic(_music, loops); };
-    static void stop() { Mix_HaltMusic(); };
+        void play(int loops) { Mix_PlayMusic(_music, loops); };
 
-private:
-    Mix_Music *_music;
-};
+        static void stop() { Mix_HaltMusic(); };
 
+    private:
+        Mix_Music *_music;
+    };
+}
 

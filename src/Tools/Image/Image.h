@@ -7,29 +7,29 @@
 #include <iostream>
 #include <utility>
 
-class Image {
-public:
-    Image(std::string p_path, float p_x = 0, float p_y = 0, float p_divider = 0)
-            : _path(std::move(p_path)), _x(p_x), _y(p_y), _divider(p_divider) {
-        apply();
+namespace Tools {
+    class Image {
+    public:
+        Image(std::string p_path, float p_x = 0, float p_y = 0, float p_divider = 0)
+                : _path(std::move(p_path)), _x(p_x), _y(p_y), _divider(p_divider) {
+            apply();
+        };
+
+        ~Image() = default;
+
+        void draw();
+        void draw(glm::vec2 p_BL, float p_width, float p_height);
+
+        void apply() { generateSurface(); bindTexture(); }
+        void deleteTexture();
+
+    private:
+        void generateSurface();
+        void bindTexture();
+
+        std::string _path;
+        SDL_Surface* _imageSurface;
+        GLuint _textureBind = 0;
+        float _x, _y, _divider;
     };
-
-    ~Image() = default;
-
-    void draw();
-    void draw(glm::vec2 p_BL, float p_width, float p_height);
-
-    void apply() { generateSurface(); bindTexture(); }
-    void deleteTexture();
-
-private:
-    void generateSurface();
-    void bindTexture();
-
-    std::string _path;
-    SDL_Surface* _imageSurface;
-    GLuint _textureBind = 0;
-    float _x, _y, _divider;
-};
-
-
+}
