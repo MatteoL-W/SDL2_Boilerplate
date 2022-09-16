@@ -53,7 +53,7 @@ void Engine::clean() {
 }
 
 /**
- * @brief Chose the right interface and refresh execute its method
+ * @brief Chose the right interface and execute its method
  */
 void Engine::refresh() {
     _currentState->update();
@@ -69,7 +69,7 @@ void Engine::refresh() {
  * @brief Initiate the window size and the orthonormal coordinate system
  */
 void Engine::initiateWindowSize() {
-    glViewport(0, 0, Engine::WINDOW_WIDTH, Engine::WINDOW_HEIGHT);
+    glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 

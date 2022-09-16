@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "SDL2/SDL.h"
+#include <SDL2/SDL.h>
 
 #include "State/IState.h"
 #include "State/Menu/MenuState.h"
@@ -20,7 +20,7 @@ public:
     void refresh();
     void clean();
 
-    bool isRunning() const { return _isRunning; };
+    [[nodiscard]] bool isRunning() const { return _isRunning; };
 
     static const int WINDOW_WIDTH = 1200;
     static const int WINDOW_HEIGHT = 750;
@@ -31,12 +31,12 @@ private:
     static void initiateWindowSize();
 
     // States
-    MenuState* _menuInterface;
-
+    MenuState *_menuInterface;
     IState *_currentState;
+
     SDL_Window *_window;
     SDL_GLContext _context;
-    SDL_Event _event;
+    SDL_Event _event{};
 
     bool _isRunning = false;
 };
