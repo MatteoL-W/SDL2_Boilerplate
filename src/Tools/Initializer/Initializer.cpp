@@ -5,17 +5,17 @@
 namespace Tools {
     void Initializer::initialize() {
         if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
-            std::cout << "SDL_INIT HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
+            std::cerr << "SDL_INIT HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
             exit(1);
         }
 
         if (!IMG_Init(IMG_INIT_PNG)) {
-            std::cout << "IMG_Init HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
+            std::cerr << "IMG_Init HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
             exit(1);
         }
 
         if (TTF_Init() < 0) {
-            std::cout << "TTF_Init HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
+            std::cerr << "TTF_Init HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;
             exit(1);
         }
 
@@ -33,7 +33,7 @@ namespace Tools {
 
     void Initializer::verifyOpenGLContext(SDL_GLContext p_context, SDL_Window *p_window) {
         if (p_context == nullptr) {
-            std::cout << "Error creating OpenGL context : " << SDL_GetError();
+            std::cerr << "Error creating OpenGL context : " << SDL_GetError();
 
             SDL_DestroyWindow(p_window);
             SDL_Quit();
