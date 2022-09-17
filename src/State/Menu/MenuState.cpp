@@ -1,3 +1,4 @@
+#include <memory>
 #include "SDL2/SDL.h"
 
 #include "Engine.h"
@@ -6,10 +7,10 @@
 #include "Constant/Color.h"
 #include "Constant/Font.h"
 
-Tool::Text *titleText;
+std::unique_ptr<Tool::Text> titleText;
 
 MenuState::MenuState() {
-    titleText = new Tool::Text(
+    titleText = std::make_unique<Tool::Text>(
             "Menu",
             TTF_OpenFont(Path::Font::Press, 50),
             Color::White,
