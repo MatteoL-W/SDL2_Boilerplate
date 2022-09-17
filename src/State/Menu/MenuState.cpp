@@ -4,13 +4,14 @@
 #include "MenuState.h"
 #include "Tools/Text/Text.h"
 #include "Constant/Color.h"
+#include "Constant/Font.h"
 
 Tools::Text *titleText;
 
 MenuState::MenuState() {
     titleText = new Tools::Text(
             "Menu",
-            TTF_OpenFont("./assets/fonts/Press.ttf", 50),
+            TTF_OpenFont(Path::Font::Press, 50),
             Color::White,
             0,
             0
