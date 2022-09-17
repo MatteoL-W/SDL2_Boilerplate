@@ -31,7 +31,7 @@ set_target_properties(${TARGET_NAME} PROPERTIES
 if (MSVC)
     target_compile_options(${TARGET_NAME} PRIVATE /W3)
 else()
-    target_compile_options(${TARGET_NAME} PRIVATE -Wall -Wextra -Wpedantic -pedantic-errors)
+    target_compile_options(${TARGET_NAME} PRIVATE -Wall -Wextra -Wpedantic -pedantic-errors -O2)
 endif()
 
 # Set the project folder
