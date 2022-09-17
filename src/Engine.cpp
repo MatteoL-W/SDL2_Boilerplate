@@ -5,6 +5,7 @@
 #include "Engine.h"
 #include "State/Menu/MenuState.h"
 #include "Tools/Initializer/Initializer.h"
+#include "Configuration/Window.h"
 
 /**
  * @brief Initialize the engine (assign the window and opengl, define the engine as running)
@@ -16,8 +17,8 @@ Engine::Engine() {
         "PROJECT",
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
-        WINDOW_WIDTH,
-        WINDOW_HEIGHT,
+        Configuration::Window::WIDTH,
+        Configuration::Window::HEIGHT,
         SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN
     );
 
@@ -69,12 +70,12 @@ void Engine::refresh() {
  * @brief Initiate the window size and the orthonormal coordinate system
  */
 void Engine::initiateWindowSize() {
-    glViewport(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
+    glViewport(0, 0, Configuration::Window::WIDTH, Configuration::Window::HEIGHT);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
 
     gluOrtho2D(
-            0, WINDOW_WIDTH,
-            0, WINDOW_HEIGHT
+            0, Configuration::Window::WIDTH,
+            0, Configuration::Window::HEIGHT
     );
 }

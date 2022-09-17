@@ -1,8 +1,8 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_ttf.h"
 
-#include "Engine.h"
 #include "Text.h"
+#include "Configuration/Window.h"
 
 namespace Tools {
     void Text::generateSurface() {
@@ -46,12 +46,12 @@ namespace Tools {
         glTexCoord2d(0, 1);
         glVertex2f(_x, _y);
         glTexCoord2d(1, 1);
-        glVertex2f(_x + ((float) _renderedText->w / (Engine::WINDOW_WIDTH)) * Engine::aspectRatio, _y);
+        glVertex2f(_x + ((float) _renderedText->w / Configuration::Window::WIDTH) * Configuration::Window::ASPECT_RATIO, _y);
         glTexCoord2d(1, 0);
-        glVertex2f(_x + ((float) _renderedText->w / (Engine::WINDOW_WIDTH)) * Engine::aspectRatio,
-                   _y + (float) _renderedText->h / (Engine::WINDOW_HEIGHT));
+        glVertex2f(_x + ((float) _renderedText->w / Configuration::Window::WIDTH) * Configuration::Window::ASPECT_RATIO,
+                   _y + (float) _renderedText->h / Configuration::Window::HEIGHT);
         glTexCoord2d(0, 0);
-        glVertex2f(_x, _y + (float) _renderedText->h / (Engine::WINDOW_HEIGHT));
+        glVertex2f(_x, _y + (float) _renderedText->h / Configuration::Window::HEIGHT);
         glEnd();
 
         glDisable(GL_BLEND);

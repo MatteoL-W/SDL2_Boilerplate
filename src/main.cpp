@@ -1,10 +1,10 @@
 #include <SDL2/SDL.h>
 
-#include "main.h"
+#include "Configuration/Frame.h"
 #include "Engine.h"
 
 Engine *engine = nullptr;
-Engine* Engine::_instance;
+Engine *Engine::_instance;
 
 int main(int argc, char *argv[]) {
     engine = Engine::GetInstance();
@@ -16,8 +16,8 @@ int main(int argc, char *argv[]) {
 
         // FPS Handle (custom in main.h)
         unsigned int frameTime = SDL_GetTicks() - frameStart;
-        if (FRAME_DELAY > frameTime) {
-            SDL_Delay(FRAME_DELAY - frameTime);
+        if (Configuration::Frame::FPS > frameTime) {
+            SDL_Delay(Configuration::Frame::FRAME_DELAY - frameTime);
         }
     }
 

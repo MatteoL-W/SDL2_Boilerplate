@@ -22,10 +22,6 @@ public:
 
     [[nodiscard]] bool isRunning() const { return _isRunning; };
 
-    static const int WINDOW_WIDTH = 1200;
-    static const int WINDOW_HEIGHT = 750;
-    constexpr static const float aspectRatio = Engine::WINDOW_WIDTH / (float) Engine::WINDOW_HEIGHT;
-
 private:
     Engine();
     static void initiateWindowSize();
