@@ -2,14 +2,14 @@
 
 #include "Engine.h"
 #include "MenuState.h"
-#include "Tools/Text/Text.h"
+#include "Tool/Text/Text.h"
 #include "Constant/Color.h"
 #include "Constant/Font.h"
 
-Tools::Text *titleText;
+Tool::Text *titleText;
 
 MenuState::MenuState() {
-    titleText = new Tools::Text(
+    titleText = new Tool::Text(
             "Menu",
             TTF_OpenFont(Path::Font::Press, 50),
             Color::White,
@@ -33,7 +33,6 @@ void MenuState::update() {
 
 void MenuState::render() {
     glClearColor(0.18, 0.5, 0.41, 1);
-    glColor3f(0, 0, 0);
     titleText->draw();
 }
 

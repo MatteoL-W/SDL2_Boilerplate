@@ -2,7 +2,7 @@
 
 #include "Initializer.h"
 
-namespace Tools {
+namespace Tool {
     void Initializer::initialize() {
         if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
             std::cerr << "SDL_INIT HAS FAILED. SDL_ERROR: " << SDL_GetError() << std::endl;

@@ -2,7 +2,7 @@
 
 #include "SDL2/SDL_mixer.h"
 
-namespace Tools {
+namespace Tool {
     class Music {
     public:
         explicit Music(const char *p_path)

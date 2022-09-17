@@ -4,7 +4,7 @@
 
 #include "Engine.h"
 #include "State/Menu/MenuState.h"
-#include "Tools/Initializer/Initializer.h"
+#include "Tool/Initializer/Initializer.h"
 #include "Configuration/Window.h"
 #include "Configuration/Project.h"
 
@@ -12,7 +12,7 @@
  * @brief Initialize the engine (assign the window and opengl, define the engine as running)
  */
 Engine::Engine() {
-    Tools::Initializer::initialize();
+    Tool::Initializer::initialize();
 
     _window = SDL_CreateWindow(
         Configuration::Project::Title,
@@ -23,9 +23,9 @@ Engine::Engine() {
         SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN
     );
 
-    Tools::Initializer::setOpenGLAttribute();
+    Tool::Initializer::setOpenGLAttribute();
     _context = SDL_GL_CreateContext(_window);
-    Tools::Initializer::verifyOpenGLContext(_context, _window);
+    Tool::Initializer::verifyOpenGLContext(_context, _window);
 
     /* Define the states */
     _menuInterface = new MenuState{};

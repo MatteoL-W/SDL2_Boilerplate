@@ -2,7 +2,7 @@
 
 #include "SDL2/SDL_mixer.h"
 
-namespace Tools {
+namespace Tool {
     class Sound {
     public:
         explicit Sound(const char *p_path)

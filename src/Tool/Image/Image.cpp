@@ -3,7 +3,7 @@
 
 #include "Image.h"
 
-namespace Tools {
+namespace Tool {
     void Image::generateSurface() {
         glEnable(GL_TEXTURE_2D);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -23,14 +23,10 @@ namespace Tools {
                      GL_RGBA, GL_UNSIGNED_BYTE, _imageSurface->pixels);
 
         glBegin(GL_QUADS);
-        glTexCoord2d(0, 1);
-        glVertex2f(_x, _y);
-        glTexCoord2d(1, 1);
-        glVertex2f(_x + (float) _imageSurface->w / _divider, _y);
-        glTexCoord2d(1, 0);
-        glVertex2f(_x + (float) _imageSurface->w / _divider, _y + (float) _imageSurface->h / _divider);
-        glTexCoord2d(0, 0);
-        glVertex2f(_x, _y + (float) _imageSurface->h / _divider);
+        glTexCoord2d(0, 1); glVertex2f(_x, _y);
+        glTexCoord2d(1, 1); glVertex2f(_x + (float) _imageSurface->w / _divider, _y);
+        glTexCoord2d(1, 0); glVertex2f(_x + (float) _imageSurface->w / _divider, _y + (float) _imageSurface->h / _divider);
+        glTexCoord2d(0, 0); glVertex2f(_x, _y + (float) _imageSurface->h / _divider);
         glEnd();
 
         glDisable(GL_BLEND);
@@ -42,14 +38,10 @@ namespace Tools {
                      GL_RGBA, GL_UNSIGNED_BYTE, _imageSurface->pixels);
 
         glBegin(GL_QUADS);
-        glTexCoord2d(0, 1);
-        glVertex2f(p_BL.x, p_BL.y);
-        glTexCoord2d(1, 1);
-        glVertex2f(p_BL.x + p_width, p_BL.y);
-        glTexCoord2d(1, 0);
-        glVertex2f(p_BL.x + p_width, p_BL.y + p_height);
-        glTexCoord2d(0, 0);
-        glVertex2f(p_BL.x, p_BL.y + p_height);
+        glTexCoord2d(0, 1); glVertex2f(p_BL.x, p_BL.y);
+        glTexCoord2d(1, 1); glVertex2f(p_BL.x + p_width, p_BL.y);
+        glTexCoord2d(1, 0); glVertex2f(p_BL.x + p_width, p_BL.y + p_height);
+        glTexCoord2d(0, 0); glVertex2f(p_BL.x, p_BL.y + p_height);
         glEnd();
 
         glDisable(GL_BLEND);
